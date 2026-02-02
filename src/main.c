@@ -1,13 +1,9 @@
 /*
- * Copyright (c) 2024 Nordic Semiconductor ASA
  * Copyright (c) 2026 Lawrence Langat <lawrencelangatmi@gmail.com>
- *
- * SPDX-License-Identifier: Apache-2.0
- *
  * 88-key USB HID Keyboard implementation
  */
 
-#include <sample_usbd.h>
+#include "usbd_init.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
@@ -432,7 +428,7 @@ static void msg_cb(struct usbd_context *const usbd_ctx,
 
 int main(void)
 {
-	struct usbd_context *sample_usbd;
+	struct usbd_context *kbd_usbd;
 	const struct device *hid_dev;
 	int ret;
 
@@ -482,14 +478,14 @@ int main(void)
 	}
 
 	/* Initialize USB device */
-	sample_usbd = sample_usbd_init_device(msg_cb);
-	if (sample_usbd == NULL) {
+	kbd_usbd = keyboard_usbd_init(msg_cb);
+	if (kbd_usbd == NULL) {
 		LOG_ERR("Failed to initialize USB device");
 		return -ENODEV;
 	}
 
-	if (!usbd_can_detect_vbus(sample_usbd)) {
-		ret = usbd_enable(sample_usbd);
+	if (!usbd_can_detect_vbus(kbd_usbd)) {
+		ret = usbd_enable(kbd_usbd);
 		if (ret) {
 			LOG_ERR("Failed to enable device support");
 			return ret;
@@ -513,10 +509,10 @@ int main(void)
 		}
 
 		/* Handle remote wakeup if suspended */
-		if (IS_ENABLED(CONFIG_SAMPLE_USBD_REMOTE_WAKEUP) &&
-		    usbd_is_suspended(sample_usbd)) {
+		if (IS_ENABLED(CONFIG_KEYBOARD_USBD_REMOTE_WAKEUP) &&
+		    usbd_is_suspended(kbd_usbd)) {
 			if (kb_evt.value) {
-				ret = usbd_wakeup_request(sample_usbd);
+				ret = usbd_wakeup_request(kbd_usbd);
 				if (ret) {
 					LOG_ERR("Remote wakeup error, %d", ret);
 				}

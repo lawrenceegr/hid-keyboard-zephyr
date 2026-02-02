@@ -1,12 +1,52 @@
-# Copyright (c) 2023 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
 
-config SAMPLE_USBD_REMOTE_WAKEUP
-	default y
+menu "Keyboard USB Configuration"
+	depends on USB_DEVICE_STACK_NEXT
 
-# Source common USB sample options used to initialize new experimental USB
-# device stack. The scope of these options is limited to USB samples in project
-# tree, you cannot use them in your own application.
-source "samples/subsys/usb/common/Kconfig.sample_usbd"
+config KEYBOARD_USBD_MANUFACTURER
+	string "USB manufacturer string"
+	default "Custom"
+	help
+	  USB device manufacturer string.
+
+config KEYBOARD_USBD_PRODUCT
+	string "USB product string"
+	default "Keyboard"
+	help
+	  USB device product string.
+
+config KEYBOARD_USBD_VID
+	hex "USB Vendor ID"
+	default 0x1209
+	help
+	  USB Vendor ID. Default 0x1209 is pid.codes test VID.
+	  For production, obtain your own VID.
+
+config KEYBOARD_USBD_PID
+	hex "USB Product ID"
+	default 0x0001
+	help
+	  USB Product ID.
+
+config KEYBOARD_USBD_SELF_POWERED
+	bool "Self-powered device"
+	default n
+	help
+	  Set if the device is self-powered (not drawing from USB).
+
+config KEYBOARD_USBD_REMOTE_WAKEUP
+	bool "Remote wakeup support"
+	default y
+	help
+	  Allow the keyboard to wake the host from suspend.
+
+config KEYBOARD_USBD_MAX_POWER
+	int "Max power (2mA units)"
+	default 50
+	range 0 250
+	help
+	  Maximum power consumption in 2mA units (50 = 100mA).
+
+endmenu
 
 source "Kconfig.zephyr"
