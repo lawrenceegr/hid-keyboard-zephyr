@@ -1,0 +1,19 @@
+identifier: keyboard_h723zg
+name: Keyboard H723ZG
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+ram: 320
+flash: 1024
+supported:
+  - uart
+  - gpio
+  - counter
+  - i2c
+  - spi
+  - usb_device
+  - usbd
+  - rtc
+vendor: st

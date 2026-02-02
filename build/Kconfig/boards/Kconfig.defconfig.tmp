@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/home/marcus/zephyrproject/workspace/hid-keyboard/boards/generic/keyboard_h723zg/Kconfig.defconfig"

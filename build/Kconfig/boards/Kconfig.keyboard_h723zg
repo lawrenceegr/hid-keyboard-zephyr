@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "/home/marcus/zephyrproject/workspace/hid-keyboard/boards/generic/keyboard_h723zg/Kconfig.keyboard_h723zg"

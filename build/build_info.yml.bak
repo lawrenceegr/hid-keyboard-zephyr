@@ -1,0 +1,61 @@
+cmake:
+  application:
+    configuration-dir: '/home/marcus/zephyrproject/workspace/hid-keyboard'
+    source-dir: '/home/marcus/zephyrproject/workspace/hid-keyboard'
+  board:
+    name: 'keyboard_h723zg'
+    path:
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/boards/generic/keyboard_h723zg'
+    qualifiers: 'stm32h723xx'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/marcus/zephyrproject/zephyr/dts/bindings'
+    files:
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/boards/generic/keyboard_h723zg/keyboard_h723zg.dts'
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/app.overlay'
+    include-dirs:
+     - '/home/marcus/zephyrproject/modules/hal/ambiq/dts'
+     - '/home/marcus/zephyrproject/modules/hal/atmel/include'
+     - '/home/marcus/zephyrproject/modules/hal/bouffalolab/include'
+     - '/home/marcus/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - '/home/marcus/zephyrproject/modules/hal/gigadevice/include'
+     - '/home/marcus/zephyrproject/modules/hal/microchip/include'
+     - '/home/marcus/zephyrproject/modules/hal/microchip/dts'
+     - '/home/marcus/zephyrproject/modules/hal/nuvoton/dts'
+     - '/home/marcus/zephyrproject/modules/hal/nxp/dts'
+     - '/home/marcus/zephyrproject/modules/hal/stm32/dts'
+     - '/home/marcus/zephyrproject/modules/hal/ti/dts'
+     - '/home/marcus/zephyrproject/zephyr/include'
+     - '/home/marcus/zephyrproject/zephyr/include/zephyr'
+     - '/home/marcus/zephyrproject/zephyr/dts/common'
+     - '/home/marcus/zephyrproject/zephyr/dts/vendor'
+     - '/home/marcus/zephyrproject/zephyr/dts/rx'
+     - '/home/marcus/zephyrproject/zephyr/dts/x86'
+     - '/home/marcus/zephyrproject/zephyr/dts/xtensa'
+     - '/home/marcus/zephyrproject/zephyr/dts/sparc'
+     - '/home/marcus/zephyrproject/zephyr/dts/riscv'
+     - '/home/marcus/zephyrproject/zephyr/dts/posix'
+     - '/home/marcus/zephyrproject/zephyr/dts/arm64'
+     - '/home/marcus/zephyrproject/zephyr/dts/arm'
+     - '/home/marcus/zephyrproject/zephyr/dts/arc'
+     - '/home/marcus/zephyrproject/zephyr/dts'
+    user-files:
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/app.overlay'
+  kconfig:
+    files:
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/boards/generic/keyboard_h723zg/keyboard_h723zg_defconfig'
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/prj.conf'
+    user-files:
+     - '/home/marcus/zephyrproject/workspace/hid-keyboard/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/marcus/zephyr-sdk-0.17.4'
+  zephyr:
+    version: '4.3.99'
+    zephyr-base: '/home/marcus/zephyrproject/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/marcus/zephyrproject/.venv/bin/west build -b keyboard_h723zg . -p'
+  topdir: '/home/marcus/zephyrproject'
+  version: '1.5.0'
